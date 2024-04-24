@@ -23,7 +23,7 @@
     </div>
     <div class="row">
       <div class="col-12 text-right">
-        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#mdl_registro_car">
+        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#mdl_registro_car" id="btn_nuevo_car">
           <i class="fas fa-plus"></i> Nuevo vehiculo
         </button>
       </div>
@@ -65,6 +65,7 @@
         </div>
         <div class="modal-body">
           <form id="frm_registro_car" name="frm_registro_car" onsubmit="return false" autocomplete="off">
+            <input type="hidden" id="id_no_normalizada" name="id_no_normalizada">
             <div class="row">
               <div class="col-6">
                 <label>Marca:</label>
@@ -74,7 +75,7 @@
                       <i class="fas fa-car"></i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Marca" name="marca" id="marca">
+                  <input type="text" class="form-control" placeholder="Marca" name="marca" id="marca" required>
                 </div>
               </div>
               <div class="col-6">
@@ -85,7 +86,7 @@
                       <i class="fas fa-car"></i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Modelo" name="modelo" id="modelo">
+                  <input type="text" class="form-control" placeholder="Modelo" name="modelo" id="modelo" required>
                 </div>
               </div>
             </div>
@@ -99,7 +100,7 @@
                     </span>
                   </div>
                   <input type="text" class="form-control" placeholder="Año" name="fecha_presentacion"
-                    id="fecha_presentacion">
+                    id="fecha_presentacion" required>
                 </div>
               </div>
               <div class="col-6">
@@ -110,7 +111,7 @@
                       <i class="fas fa-gas-pump"></i>
                     </span>
                   </div>
-                  <select class="form-control" name="tipo_combustible" id="tipo_combustible">
+                  <select class="form-control" name="tipo_combustible" id="tipo_combustible" required>
                     <option value="">Seleccione un tipo</option>
                     <option value="1">Diésel</option>
                     <option value="2">Gasolina</option>
@@ -127,7 +128,7 @@
                       <i class="fas fa-car-alt"></i>
                     </span>
                   </div>
-                  <select class="form-control" name="tipo_vehiculo" id="tipo_vehiculo">
+                  <select class="form-control" name="tipo_vehiculo" id="tipo_vehiculo" required>
                     <option value="">Seleccione un tipo</option>
                     <option value="1">Sedán</option>
                     <option value="2">Moto</option>
@@ -144,7 +145,7 @@
                       <i class="fas fa-searchengin"></i>
                     </span>
                   </div>
-                  <select class="form-control" name="tipo_transmision" id="tipo_transmision">
+                  <select class="form-control" name="tipo_transmision" id="tipo_transmision" required>
                     <option value="">Seleccione un tipo</option>
                     <option value="1">Estándar</option>
                     <option value="2">Automático</option>
@@ -161,7 +162,7 @@
                       <i class="fas fa-palette"></i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Color" name="color" id="color">
+                  <input type="text" class="form-control" placeholder="Color" name="color" id="color" required>
                 </div>
               </div>
               <div class="col-6">
@@ -172,8 +173,7 @@
                       <i class="fas fa-door-open"></i>
                     </span>
                   </div>
-                  <input type="number" class="form-control" placeholder="Puertas" name="numero_puertas"
-                    id="numero_puertas" min="0" max="8">
+                  <input type="number" class="form-control" placeholder="Puertas" name="numero_puertas" id="numero_puertas" min="0" max="8" required>
                 </div>
               </div>
             </div>
@@ -183,7 +183,7 @@
           <button type="button" class="btn btn-danger" data-dismiss="modal">
             <i class="fas fa-times"></i> Cerrar
           </button>
-          <button type="submit" class="btn btn-success" form="frm_registro_car">
+          <button type="submit" class="btn btn-success" form="frm_registro_car" id="btn_guardar_car">
             <i class="fas fa-save"></i> Guardar
           </button>
         </div>
