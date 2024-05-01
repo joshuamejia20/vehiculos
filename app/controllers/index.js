@@ -16,6 +16,12 @@ $(document).ready(function () {
         obtener_vehiculo(id_no_normalizada);
     });
 
+    $("#tabla_vehiculos").on('click','.eliminar-vehiculo', function (){
+        let id_no_normalizada = $(this).attr('data-id');
+
+        eliminar_vehiculo(id_no_normalizada);
+    });
+
     $("#btn_nuevo_car").click(function () { 
         $("#mdl_title_registro").html('<i class="fas fa-plus"></i> Registrar nuevo vehiculo');
         $("#btn_guardar_car").addClass('btn-success').removeClass('btn-warning').html('<i class="fas fa-save"></i> Guardar');
@@ -47,6 +53,9 @@ function listar_vehiculos(){
                     '<td>'+
                         '<button type="button" title="Editar" class="btn btn-warning editar-vehiculo" data-id="'+response.resultado[i].id_no_normalizada+'">'+
                         '<i class="fas fa-edit"></i>'+
+                        '</button>'+
+                        '&emsp;<button type="button" title="Eliminar" class="btn btn-danger eliminar-vehiculo" data-id="'+response.resultado[i].id_no_normalizada+'">'+
+                        '<i class="fas fa-trash"></i>'+
                         '</button>'+
                     '</td>'+
                 '</tr>';
@@ -156,4 +165,61 @@ function obtener_vehiculo(id_no_normalizada){
     .fail(function(jqXHR, textStatus, errorThrown){
         console.log("Error al realizar la solicitud: "+ textStatus, errorThrown);
     })
+}
+
+function eliminar_vehiculo(id_no_normalizada){
+    Swal.fire({
+        title: "¿Desea eliminar este vehiculo?",
+        text: "No podrá revertir ésta acción",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: 'Cancelar',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+    }).then((result) => {
+        console.log(result);
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'app/models/vehiculos/eliminar.php', //hacia donde irá la solicitud (ruta)
+                type: 'POST', //el metodo http a utilizar
+                dataType: 'json', //tipo de datos que se espera recibir del servidor
+                data: {
+                    id_no_normalizada: id_no_normalizada
+                }
+            }) // datos enviados al servidor
+            .done(function (response){
+                if(response.success){
+                    listar_vehiculos();
+                    Swal.fire({
+                        title: "<strong>Éxito</strong>",
+                        icon: "success",
+                        html: response.msg,
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonText: 'Aceptar',
+                        cancelButtonText: 'Cancelar',
+                    });
+                }else{
+                    //console.error(response.error);
+                    Swal.fire({
+                        title: "<strong>Atención</strong>",
+                        icon: "info",
+                        html: response.error,
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonText: 'Aceptar',
+                        cancelButtonText: 'Cancelar',
+                    });
+                }
+            })//si la respuesta es exitosa (comunicacion)
+            .fail(function(jqXHR, textStatus, errorThrown){
+                console.log("Error al realizar la solicitud: "+ textStatus, errorThrown);
+            })
+        }
+    });
 }
