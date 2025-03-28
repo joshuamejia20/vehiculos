@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <fieldset>
+            <legend>Datos personales</legend>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Nombres</label>
+                    <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="exampleInputEmail1">Apellidos</label>
+                    <input type="text" class="form-control" id="Apellidos" placeholder="Apellidos">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="Fecha_nacimiento" placeholder="Fecha de nacimiento">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Sexo</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Masculino
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                        <label class="form-check-label" for="exampleRadios1">
+                            Femenino
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Datos de Carrera</legend>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="exampleInputEmail1">Número de carnet</label>
+                    <input type="text" class="form-control" id="carnet" placeholder="Número de carnet">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="exampleInputEmail1">Años en la Universidad</label>
+                    <input type="number" class="form-control" id="anios" placeholder="Años en la Universidad">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="exampleInputEmail1">Carrera</label>
+                    <select class="form-control">
+                        <optgroup label="Ciencias Economicas">
+                            <option>Contaduria</option>
+                            <option>Administracion de Empresas</option>
+                            <option>Ingeniería en Ciencias de la computación</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
