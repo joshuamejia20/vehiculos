@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/sweetalert/sweetalert2.min.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-center">Operación Frontend-Backend</h4>
+            </div>
+        </div>
+        <hr>
+        <form name="frm_operar" id="frm_operar" onsubmit="return false">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="number" name="numero_uno" id="numero_uno" class="form-control" placeholder="Digite primer número">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="numero_dos" id="numero_dos" class="form-control" placeholder="Digite segundo número">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <select class="form-control" id="tipo_operacion" name="tipo_operacion">
+                        <option value="">Seleccione el tipo de operación</option>
+                        <option value="1">Sumar</option>
+                        <option value="2">Restar</option>
+                        <option value="3">Multiplicar</option>
+                        <option value="4">Dividir</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-outline-primary btn-block" type="submit" id="btn_operar">
+                        Operar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="resources/jquery/jquery.min.js"></script>
+    <script src="resources/popper/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="resources/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="app/controllers/operacion.js"></script>
+</body>
+
+</html>
