@@ -1,5 +1,13 @@
 $(document).ready(function () {
     listar_vehiculos();
+
+    $("#btn_guardar_vehiculo").click(function () { 
+        guardar_vehiculo();
+    });
+
+    $('#mdl_vehiculo').on('hidden.bs.modal', function (event) {
+        $("#frm_vehiculo").trigger('reset');
+    });
 });
 
 function listar_vehiculos(){
@@ -20,6 +28,7 @@ function listar_vehiculos(){
     })
     .done(function(response){ 
         if(response.success){
+            $("#tb_vehiculos").empty();
             Swal.close();
             $tabla_resultado = "";
             for (let i = 0; i < response.resultado.length; i++) {
@@ -37,7 +46,59 @@ function listar_vehiculos(){
                 "</tr>";
             }
 
-            $("#tb_vehiculos").html($tabla_resultado);
+            $("#tb_vehiculos").append($tabla_resultado);
+        }else{
+            Swal.fire({
+                title: "Atención",
+                text: response.error,
+                icon: "info"
+            });
+        }
+    }).fail(function(){ 
+        console.log("falla");
+    });
+}
+
+function guardar_vehiculo(){
+    let datos = {
+        marca: $("#marca").val(),
+        modelo: $("#modelo").val(),
+        fecha: $("#fecha").val(),
+        tipo_vehiculo: $("#tipo_vehiculo").val(),
+        tipo_gasolina: $("#tipo_gasolina").val(),
+        tipo_traccion: $("#tipo_traccion").val(),
+        color: $("#color").val(),
+        numero_puertas: $("#numero_puertas").val()
+    }
+
+    $.ajax({
+        url: 'app/models/vehiculos/guardar.php',
+        type: 'POST',
+        dataType: 'Json',
+        data: datos,
+        beforeSend: function(){
+            Swal.showLoading();
+            //$("#btn_operar").attr("disabled", true);
+        },
+        complete: function(){
+            /*setTimeout(() => {
+                $("#btn_operar").attr("disabled", false);
+            }, 3000);*/
+        }
+    })
+    .done(function(response){ 
+        if(response.success){
+            //cierre de modal
+            $("#mdl_vehiculo").modal('hide');
+            //llamar a funcion que lista nuevamente
+            listar_vehiculos();
+
+            //mostrar mensaje de exito
+            Swal.fire({
+                title: "Éxito",
+                text: response.msg,
+                icon: "success"
+            });
         }else{
             Swal.fire({
                 title: "Atención",
