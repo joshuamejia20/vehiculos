@@ -18,14 +18,14 @@
             </div>
             <div class="col-md-12">
                 <button type="button" data-toggle="modal" data-target="#mdl_vehiculo"
-                    class="btn btn-success float-right">
+                    class="btn btn-success float-right" id="nuevo_vehiculo">
                     <i class="fas fa-save"></i> Nuevo vehiculo
                 </button>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-md-12 table-responsive">
-                <table class="table table-dark">
+                <table class="table table-dark" id="tabla_vehiculos">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -47,17 +47,18 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="mdl_vehiculo" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="mdl_vehiculo" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Registro de vehiculo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form id="frm_vehiculo" name="frm_vehiculo" onsubmit="return false">
+                        <input type="hidden" id="id_no_normalizada">
                         <div class="form-group">
                             <label for="marca"><i class="fas fa-tag"></i> Marca:</label>
                             <input type="text" class="form-control" id="marca" name="marca" required>
@@ -113,6 +114,9 @@
                     </button>
                     <button type="submit" class="btn btn-primary" form="frm_vehiculo" id="btn_guardar_vehiculo">
                         <i class="fas fa-save"></i> Guardar
+                    </button>
+                    <button type="submit" class="btn btn-warning" form="frm_vehiculo" id="btn_update_vehiculo">
+                        <i class="fas fa-edit"></i> Actualizar
                     </button>
                 </div>
             </div>
