@@ -1,0 +1,115 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">Registro de Vehiculos</h3>
+        </div>
+        <div class="col-md-12">
+            <button type="button" data-toggle="modal" data-target="#mdl_vehiculo" class="btn btn-success float-right"
+                id="nuevo_vehiculo">
+                <i class="fas fa-save"></i> Nuevo vehiculo
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-dark" id="tabla_vehiculos">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Año</th>
+                        <th scope="col">Puertas</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Gasolina</th>
+                        <th scope="col">Tracción</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tb_vehiculos"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="mdl_vehiculo" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Registro de vehiculo</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frm_vehiculo" name="frm_vehiculo" onsubmit="return false">
+                    <input type="hidden" id="id_no_normalizada">
+                    <div class="form-group">
+                        <label for="marca"><i class="fas fa-tag"></i> Marca:</label>
+                        <input type="text" class="form-control" id="marca" name="marca" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo"><i class="fas fa-file-signature"></i> Modelo:</label>
+                        <input type="text" class="form-control" id="modelo" name="modelo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha"><i class="far fa-calendar-alt"></i> Año:</label>
+                        <input type="number" class="form-control" id="fecha" name="fecha" min="1900" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_vehiculo"><i class="fas fa-truck"></i> Tipo de Vehículo:</label>
+                        <select class="form-control" id="tipo_vehiculo" name="tipo_vehiculo" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Sedan">Sedán</option>
+                            <option value="Camioneta">Camioneta</option>
+                            <option value="Moto">Moto</option>
+                            <option value="Bus">Bus</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_gasolina"><i class="fas fa-gas-pump"></i> Tipo de Gasolina:</label>
+                        <select class="form-control" id="tipo_gasolina" name="tipo_gasolina" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Gasolina">Gasolina</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_traccion"><i class="fas fa-cog"></i> Tipo de Tracción:</label>
+                        <select class="form-control" id="tipo_traccion" name="tipo_traccion" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Automatico">Automático</option>
+                            <option value="Estándar">Estándar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="color"><i class="fas fa-palette"></i> Color:</label>
+                        <input type="text" class="form-control" id="color" name="color" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero_puertas"><i class="fas fa-door-closed"></i> Número de Puertas:</label>
+                        <input type="number" class="form-control" id="numero_puertas" name="numero_puertas" min="1"
+                            required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <i class="fas fa-times"></i> Cerrar
+                </button>
+                <button type="submit" class="btn btn-primary" form="frm_vehiculo" id="btn_guardar_vehiculo">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+                <button type="submit" class="btn btn-warning" form="frm_vehiculo" id="btn_update_vehiculo">
+                    <i class="fas fa-edit"></i> Actualizar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="app/controllers/vehiculos.js"></script>
