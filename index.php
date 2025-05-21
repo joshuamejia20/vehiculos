@@ -2,7 +2,10 @@
     date_default_timezone_set('America/El_Salvador');
     setlocale(LC_TIME, 'spanish');
 
+    session_start();
+
     require_once('conf.php');
+    
 
     if(isset($_GET['mod'])){
         $modulo = $_GET['mod'];

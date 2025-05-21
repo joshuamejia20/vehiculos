@@ -2,6 +2,10 @@ $(document).ready(function () {
     $("#btn_guardar").click(function(){
         guardar_registro();
     });
+
+    $("#btn_cierre_sesion").click(function () { 
+        cerrar_sesion();
+    });
 });
 
 function guardar_registro(){
@@ -41,4 +45,49 @@ function guardar_registro(){
         .addClass('alert-danger')
         .html("Debe rellenar todos los campos");
     }
+}
+
+function cerrar_sesion(){
+    Swal.fire({
+        title: "¿Está seguro que desea cerrar sesión?",
+        text: "Será redirigido al login",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, cerrar sesión",
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'app/models/logout.php',
+                type: 'POST',
+                dataType: 'Json',
+                data: {},
+                beforeSend: function(){
+                    Swal.showLoading();
+                    //$("#btn_operar").attr("disabled", true);
+                },
+                complete: function(){
+                    /*setTimeout(() => {
+                        $("#btn_operar").attr("disabled", false);
+                    }, 3000);*/
+                }
+            })
+            .done(function(response){ 
+                Swal.close();
+                if(response.success){
+                    location.href = response.url;
+                }else{
+                    Swal.fire({
+                        title: "Atención",
+                        text: response.error,
+                        icon: "info"
+                    });
+                }
+            }).fail(function(){ 
+                console.log("falla");
+            });
+        }
+    });
 }

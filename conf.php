@@ -9,26 +9,27 @@ define('LAYOUT_PAHT', realpath('app/templates'));
 $id_rol = 2;
 
 $conf['error'] = array(
-    'archivo'=>'404.php',
-    'layout'=>LAYOUT_DESKTOP
+    'archivo' => '404.php',
+    'layout' => LAYOUT_DESKTOP
 );
 
 $conf['login'] = array(
-    'archivo'=>'login.php',
-    'layout'=>LAYOUT_LOGIN
+    'archivo' => 'login.html',
+    'layout' => LAYOUT_LOGIN
 );
 
 $conf['vehiculos'] = array(
-    'archivo'=>'vehiculos.html',
-    'layout'=>LAYOUT_DESKTOP
+    'archivo' => 'vehiculos.html',
+    'layout' => LAYOUT_DESKTOP
 );
 
-if($id_rol == 1){
+$conf['inicio'] = array(
+    'archivo' => 'home.html',
+    'layout' => LAYOUT_DESKTOP
+);
 
-    $conf['vehiculos-dos'] = array(
-        'archivo'=>'vehiculos2.html',
-        'layout'=>LAYOUT_DESKTOP
-    );
-    
-}
-?>
+
+$conf['vehiculos-dos'] = array(
+    'archivo' => 'vehiculos2.html',
+    'layout' => LAYOUT_DESKTOP
+);
