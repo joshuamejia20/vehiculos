@@ -44,6 +44,10 @@ try {
                     $_SESSION['vehiculos_usuario'] = $items[0]['usuario'];
                     $_SESSION['vehiculos_nombre_completo'] = $items[0]['nombres'] ." " .  $items[0]['apellidos'];
 
+                    $sql = "INSERT INTO bitacora(tabla_afectada, registro_afectado, fecha_accion, tipo_accion, id_usuario)
+                    VALUES('no_aplica', 0, NOW(), 1, $_SESSION[vehiculos_id_usuario])";
+                    $ingreso = mysqli_query($con, $sql);
+
                     $response = array(
                         'success'=>true,
                         'url' => '?mod=inicio'
