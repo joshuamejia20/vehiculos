@@ -6,7 +6,7 @@
     $clave = "";
     $base = "bd_vehiculos";
 
-    $con = mysqli_connect($servidor, $usuario, $clave, $base, 3306);
+    $con = mysqli_connect($servidor, $usuario, $clave, $base, 3307);
 
     if($con){
         $con->set_charset("utf-8");

@@ -33,6 +33,11 @@
   <link rel="stylesheet" href="resources/plugins/summernote/summernote-bs4.min.css">
   <!-- jQuery -->
 <script src="resources/plugins/jquery/jquery.min.js"></script>
+
+<link rel="stylesheet" href="resources/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="resources/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<script src="resources/plugins/select2/js/select2.full.min.js"></script>
+<script src="resources/plugins/select2/js/i18n/es.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -89,6 +94,14 @@
               <i class="nav-icon fas fa-car"></i>
               <p>
                 Vehiculos 2
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?mod=selects" class="nav-link">
+              <i class="nav-icon fas fa-car"></i>
+              <p>
+                Selects
               </p>
             </a>
           </li>

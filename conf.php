@@ -23,6 +23,11 @@ $conf['vehiculos'] = array(
     'layout' => LAYOUT_DESKTOP
 );
 
+$conf['selects'] = array(
+    'archivo' => 'seleccion.php',
+    'layout' => LAYOUT_DESKTOP
+);
+
 $conf['inicio'] = array(
     'archivo' => 'home.html',
     'layout' => LAYOUT_DESKTOP
